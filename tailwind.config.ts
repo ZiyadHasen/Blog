@@ -22,12 +22,18 @@ const config: Config = {
   				foreground: 'hsl(var(--popover-foreground))'
   			},
   			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
+  				DEFAULT: '#FF6F00',
+  				foreground: '#FFFFFF',
+  				hover: '#FF8733',
+  				active: '#E66300',
+  				disabled: '#FFA266'
   			},
   			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
+  				DEFAULT: '#F8F9FA',
+  				foreground: '#1F2937',
+  				hover: '#E5E7EB',
+  				active: '#D1D5DB',
+  				disabled: '#F3F4F6'
   			},
   			muted: {
   				DEFAULT: 'hsl(var(--muted))',
@@ -63,18 +69,18 @@ const config: Config = {
   		keyframes: {
   			'accordion-down': {
   				from: {
-  					height: '0'
+  			height: '0'
   				},
   				to: {
-  					height: 'var(--radix-accordion-content-height)'
+  			height: 'var(--radix-accordion-content-height)'
   				}
   			},
   			'accordion-up': {
   				from: {
-  					height: 'var(--radix-accordion-content-height)'
+  			height: 'var(--radix-accordion-content-height)'
   				},
   				to: {
-  					height: '0'
+  			height: '0'
   				}
   			}
   		},
