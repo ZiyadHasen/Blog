@@ -28,9 +28,4 @@ return <UserDropdown user={user} onSignOut={()=>{authClient.signOut({
 }}/>
 
 
-
-
-
-
-
 }

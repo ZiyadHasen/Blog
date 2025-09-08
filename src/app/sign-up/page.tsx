@@ -6,11 +6,8 @@ import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-
-
 export default function SignUpPage() {
   const router = useRouter();
-
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSignUp = async (values: SignUpFormValues) => {
@@ -36,15 +33,24 @@ export default function SignUpPage() {
         });
       },
     });
-    
-    
   };
-
- 
 
   return (
     <main className="min-h-screen flex items-center justify-center">
-      <SignUpForm onSubmit={handleSignUp} />
+      <SignUpForm 
+        onSubmit={handleSignUp} 
+        isPending={isLoading}
+        onGoogleSignIn={() => {
+          authClient.signIn.social({
+            provider: "google",
+          });
+        }}
+        onGitHubSignIn={() => {
+          authClient.signIn.social({
+            provider: "github",
+          });
+        }}
+      />
     </main>
   );
 } 

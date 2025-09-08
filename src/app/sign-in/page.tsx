@@ -8,7 +8,7 @@ import { useState } from "react";
 
 export default function SignInPage() {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isPending, setIsPending] = useState(false);
 
   const handleSignIn = async (values: SignInFormValues) => {
     await authClient.signIn.email({
@@ -16,10 +16,10 @@ export default function SignInPage() {
       password: values.password,
     }, {
       onRequest: () => {
-        setIsLoading(true);
+        setIsPending(true);
       },
       onResponse: () => {
-        setIsLoading(false);
+        setIsPending(false);
       },
       onSuccess: () => {
         router.push(`/`);
@@ -36,7 +36,20 @@ export default function SignInPage() {
 
   return (
     <main className="min-h-screen flex items-center justify-center">
-      <SignInForm onSubmit={handleSignIn} />
+      <SignInForm 
+        onSubmit={handleSignIn} 
+        isPending={isPending} 
+        onGoogleSignIn={() => {
+          authClient.signIn.social({
+            provider: "google",
+          });
+        }}
+        onGitHubSignIn={() => {
+          authClient.signIn.social({
+            provider: "github",
+          });
+        }}
+      />
     </main>
   );
 } 
